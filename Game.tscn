@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://dec15bf0rcyj"]
+
+[ext_resource type="PackedScene" uid="uid://duxv21xnjkro6" path="res://Assets/Paddle.tscn" id="1_m4ftr"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_nwu3w"]
+[ext_resource type="PackedScene" uid="uid://dfhxag8lv502" path="res://Assets/wall.tscn" id="2_8botx"]
+[ext_resource type="PackedScene" uid="uid://cd6e7xq0mf16u" path="res://Assets/Ball.tscn" id="3_ixu7q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3xs5"]
+size = Vector2(1400, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ea4wm"]
+size = Vector2(10, 150)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_nwu3w")
+
+[node name="Paddle" parent="." instance=ExtResource("1_m4ftr")]
+position = Vector2(600, 700)
+rotation = 1.5708
+ai_type = 6
+
+[node name="Wall" parent="." instance=ExtResource("2_8botx")]
+position = Vector2(1260, 360)
+scale = Vector2(20, 672)
+
+[node name="Wall2" parent="." instance=ExtResource("2_8botx")]
+position = Vector2(20, 360)
+scale = Vector2(20, 672)
+
+[node name="Wall3" parent="." instance=ExtResource("2_8botx")]
+position = Vector2(640, 19)
+rotation = 1.5708
+scale = Vector2(20, 1260)
+
+[node name="Catch" type="Area2D" parent="."]
+position = Vector2(640, 800)
+disable_mode = 2
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Catch"]
+shape = SubResource("RectangleShape2D_j3xs5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Catch"]
+position = Vector2(-695, -70)
+shape = SubResource("RectangleShape2D_ea4wm")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Catch"]
+position = Vector2(695, -70)
+shape = SubResource("RectangleShape2D_ea4wm")
+
+[node name="Ball" parent="." instance=ExtResource("3_ixu7q")]
+position = Vector2(640, 600)
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 1280.0
+offset_bottom = 133.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="Catch" to="." method="_on_paddle_miss"]

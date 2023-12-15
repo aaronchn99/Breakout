@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd6e7xq0mf16u"]
+
+[ext_resource type="Script" path="res://Scripts/Ball.gd" id="1_8yuuo"]
+[ext_resource type="AudioStream" uid="uid://xulgo2kxio60" path="res://Assets/PONG_BEEP.mp3" id="2_pl642"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owara"]
+size = Vector2(30, 30)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_d8xkw"]
+
+[node name="Ball" type="RigidBody2D"]
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("1_8yuuo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_owara")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(30, 30)
+texture = SubResource("CanvasTexture_d8xkw")
+
+[node name="CollideSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pl642")

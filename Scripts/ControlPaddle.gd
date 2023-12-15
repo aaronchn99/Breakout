@@ -14,7 +14,7 @@ var Rng = RandomNumberGenerator.new()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	var motion = Vector2.DOWN * speed * delta
+	var motion = Vector2.RIGHT * speed * delta
 	motion *= human_control() if is_human else cpu_control()
 	move_and_collide(motion)
 
@@ -38,7 +38,7 @@ func random_ai():
 # Follow ball
 func follow_ai():
 	var Ball = get_node("../Ball")
-	return (Ball.position.y - position.y)/abs(Ball.position.y - position.y)
+	return (Ball.position.x - position.x)/abs(Ball.position.x - position.x)
 
 # Follow but with sticky controls (direction does not change for interval)
 func follow_sticky():
@@ -67,50 +67,48 @@ func follow_corrupt_sticky():
 func trajectory_ai():
 	# All the objects we need
 	var Ball = get_node("../Ball")
-	var Floor = get_node("../Floor")
-	var Ceil = get_node("../Ceiling")
+	var Floor = get_node("../Wall")
+	var Ceil = get_node("../Wall2")
 
-	var Dx = position.x - Ball.position.x
+	var Dy = position.y - Ball.position.y
 
 	# Do nothing if ball going opposite
-	if Ball.velocity.x * Dx <= 0:
+	if Ball.velocity.y * Dy <= 0:
 		return 0;
 
-	var dy = Ball.velocity.y / Ball.velocity.x * Dx # Projected position
-	var y = Ball.position.y
-	var y_min = Ceil.position.y
-	var y_max = Floor.position.y
-	var ball_h = Ball.get_node('CollisionShape2D').shape.size.y
+	var dx = Ball.velocity.x / Ball.velocity.y * Dy # Projected position
+	var x = Ball.position.x
+	var x_min = Ceil.position.x
+	var x_max = Floor.position.x
+	var ball_h = Ball.get_node('CollisionShape2D').shape.size.x
 	# Reflect trajectory until within bounds
-	while y + dy < y_min or y_max < y + dy:
-		var y_b = y_min + ball_h/2 if y + dy < y_min else y_max - ball_h/2
-		dy -= 2 * (y+dy-y_b)
+	while x + dx < x_min or x_max < x + dx:
+		var x_b = x_min + ball_h/2 if x + dx < x_min else x_max - ball_h/2
+		dx -= 2 * (x+dx-x_b)
 
-	var Dy = y + dy - position.y
-	if abs(Dy) < 10:
+	var Dx = x + dx - position.x
+	if abs(Dx) < 10:
 		return 0
-	return 1 if Dy > 0 else -1
+	return 1 if Dx > 0 else -1
 
 # Positions to ball's trajectory (may be off bounds)
 func trajectory_non_reflect():
 	# All the objects we need
 	var Ball = get_node("../Ball")
-	var Floor = get_node("../Floor")
-	var Ceil = get_node("../Ceiling")
 
-	var Dx = position.x - Ball.position.x
+	var Dy = position.y - Ball.position.y
 
 	# Do nothing if ball going opposite
-	if Ball.velocity.x * Dx <= 0:
+	if Ball.velocity.y * Dy <= 0:
 		return 0;
 
-	var dy = Ball.velocity.y / Ball.velocity.x * Dx # Projected position
-	var y = Ball.position.y
+	var dx = Ball.velocity.x / Ball.velocity.y * Dy # Projected position
+	var x = Ball.position.x
 
-	var Dy = y + dy - position.y
-	if abs(Dy) < 10:
+	var Dx = x + dx - position.x
+	if abs(Dx) < 10:
 		return 0
-	return 1 if Dy > 0 else -1
+	return 1 if Dx > 0 else -1
 
 func cpu_control():
 	if ai_type == AI_Type.RANDOM:
