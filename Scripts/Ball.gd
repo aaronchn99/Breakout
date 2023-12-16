@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 @export var start_speed = 700
+@export var SPEED_UP = 5
 var original_pos : Vector2
 var velocity : Vector2
 
@@ -28,6 +29,11 @@ func _physics_process(delta):
 		
 		if Collider.get_collision_layer() == 4:
 			Collider.queue_free()
+			velocity *= start_speed+SPEED_UP
+			velocity /= start_speed
+			start_speed += SPEED_UP
+			print(start_speed)
+			print(velocity.length())
 		collide_sound.play()
 	rotation = 0	# Prevent rotation due to sandwiching
 

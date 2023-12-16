@@ -7,6 +7,9 @@ func _process(delta):
 	if lives == 0 and not $GameOver.visible:
 		$GameOver.visible = true
 		get_tree().paused = true
+	elif $Bricks.get_child_count() == 0 and not $GameWin.visible:
+		$GameWin.visible = true
+		get_tree().paused = true 
 
 func _on_paddle_miss(body):
 	print("Paddle Missed :(")
