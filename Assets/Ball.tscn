@@ -9,7 +9,7 @@ size = Vector2(30, 30)
 [sub_resource type="CanvasTexture" id="CanvasTexture_d8xkw"]
 
 [node name="Ball" type="RigidBody2D"]
-collision_mask = 3
+collision_mask = 7
 gravity_scale = 0.0
 script = ExtResource("1_8yuuo")
 
@@ -22,3 +22,8 @@ texture = SubResource("CanvasTexture_d8xkw")
 
 [node name="CollideSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_pl642")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="shoot_ball"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://vumphuce7gjf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0avj"]
+size = Vector2(100, 20)
+
+[sub_resource type="Gradient" id="Gradient_r66v2"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xs7wf"]
+gradient = SubResource("Gradient_r66v2")
+width = 1
+
+[node name="Brick" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b0avj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(100, 20)
+texture = SubResource("GradientTexture1D_xs7wf")

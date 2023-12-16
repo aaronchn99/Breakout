@@ -17,20 +17,27 @@ func _physics_process(delta):
 	var collide_sound = get_node("CollideSound")
 	if collide_info:
 		var Collider = collide_info.get_collider()
-		if Collider.get_collision_layer() == 2: # Floor/Ceiling
-			velocity = velocity.bounce(collide_info.get_normal())
-			collide_sound.set_pitch_scale(1)
-		else:	# Paddles
+		if Collider.get_collision_layer() == 1:	# Paddles
 			var speed = velocity.length()
 			var direction = (position - Collider.position).normalized()
 			velocity = speed * direction
 			collide_sound.set_pitch_scale(2)
+		else:
+			velocity = velocity.bounce(collide_info.get_normal())
+			collide_sound.set_pitch_scale(1)
+		
+		if Collider.get_collision_layer() == 4:
+			Collider.queue_free()
 		collide_sound.play()
 	rotation = 0	# Prevent rotation due to sandwiching
 
 # Moves ball back to starting position
 func reset():
 	position = original_pos
+	velocity = Vector2.ZERO
+	$Timer.start()
+
+func shoot_ball():
 	# Start 45deg from down, random chance to 135deg, reverse if p2
 	velocity = start_speed * Vector2.RIGHT.rotated(PI*(0.5+Rng.randi_range(0, 1))/2)
 	var collide_sound = get_node("CollideSound")
