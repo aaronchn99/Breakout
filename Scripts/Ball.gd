@@ -44,8 +44,7 @@ func reset():
 	$Timer.start()
 
 func shoot_ball():
-	# Start 45deg from down, random chance to 135deg, reverse if p2
-	velocity = start_speed * Vector2.RIGHT.rotated(PI*(0.5+Rng.randi_range(0, 1))/2)
+	velocity = start_speed * Vector2.RIGHT.rotated(PI/4)
 	var collide_sound = get_node("CollideSound")
 	collide_sound.set_pitch_scale(3)
 	collide_sound.play()

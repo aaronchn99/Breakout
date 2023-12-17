@@ -1,23 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://vumphuce7gjf"]
+[gd_scene load_steps=5 format=3 uid="uid://vumphuce7gjf"]
+
+[ext_resource type="Script" path="res://Scripts/brick.gd" id="1_cnxh0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0avj"]
 size = Vector2(100, 20)
 
-[sub_resource type="Gradient" id="Gradient_r66v2"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_qtf4v"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xs7wf"]
-gradient = SubResource("Gradient_r66v2")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rxula"]
+gradient = SubResource("Gradient_qtf4v")
 width = 1
 
-[node name="Brick" type="RigidBody2D"]
+[node name="Brick" type="RigidBody2D" groups=["brick"]]
 collision_layer = 4
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("1_cnxh0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_b0avj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(100, 20)
-texture = SubResource("GradientTexture1D_xs7wf")
+texture = SubResource("GradientTexture1D_rxula")

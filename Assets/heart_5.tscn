@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://w6brv7pnrhue"]
+
+[ext_resource type="Texture2D" uid="uid://bkm8woxecuilj" path="res://Assets/sprite/heart_5.png" id="1_gmoko"]
+
+[node name="Heart5" type="TextureRect" groups=["heart5"]]
+offset_right = 48.0
+offset_bottom = 32.0
+texture = ExtResource("1_gmoko")
+stretch_mode = 4

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cd6e7xq0mf16u"]
 
 [ext_resource type="Script" path="res://Scripts/Ball.gd" id="1_8yuuo"]
-[ext_resource type="AudioStream" path="res://Assets/PONG_BEEP.mp3" id="2_pl642"]
+[ext_resource type="AudioStream" uid="uid://xulgo2kxio60" path="res://Assets/PONG_BEEP.mp3" id="2_pl642"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_owara"]
 size = Vector2(30, 30)

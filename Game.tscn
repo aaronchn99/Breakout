@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dec15bf0rcyj"]
+[gd_scene load_steps=10 format=3 uid="uid://dec15bf0rcyj"]
 
 [ext_resource type="PackedScene" uid="uid://duxv21xnjkro6" path="res://Assets/Paddle.tscn" id="1_m4ftr"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_nwu3w"]
 [ext_resource type="PackedScene" uid="uid://dfhxag8lv502" path="res://Assets/wall.tscn" id="2_8botx"]
 [ext_resource type="PackedScene" uid="uid://cd6e7xq0mf16u" path="res://Assets/Ball.tscn" id="3_ixu7q"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="5_gwq80"]
-[ext_resource type="PackedScene" uid="uid://vumphuce7gjf" path="res://Assets/brick.tscn" id="6_2tax7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3xs5"]
 size = Vector2(1400, 10)
@@ -146,247 +145,13 @@ shape = SubResource("RectangleShape2D_ea4wm")
 position = Vector2(643, 485)
 start_speed = 500
 
-[node name="Bricks" type="Node2D" parent="."]
-
-[node name="Brick" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(253, 141)
-
-[node name="Brick2" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(140, 141)
-
-[node name="Brick3" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(477, 141)
-
-[node name="Brick4" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(364, 141)
-
-[node name="Brick5" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(701, 141)
-
-[node name="Brick6" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(588, 141)
-
-[node name="Brick7" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(925, 141)
-
-[node name="Brick8" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(812, 141)
-
-[node name="Brick9" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1149, 141)
-
-[node name="Brick10" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1036, 141)
-
-[node name="Brick11" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(253, 176)
-
-[node name="Brick12" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(140, 176)
-
-[node name="Brick13" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(477, 176)
-
-[node name="Brick14" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(364, 176)
-
-[node name="Brick15" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(701, 176)
-
-[node name="Brick16" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(588, 176)
-
-[node name="Brick17" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(925, 176)
-
-[node name="Brick18" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(812, 176)
-
-[node name="Brick19" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1149, 176)
-
-[node name="Brick20" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1036, 176)
-
-[node name="Brick21" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(254, 210)
-
-[node name="Brick22" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(141, 210)
-
-[node name="Brick23" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(478, 210)
-
-[node name="Brick24" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(365, 210)
-
-[node name="Brick25" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(702, 210)
-
-[node name="Brick26" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(589, 210)
-
-[node name="Brick27" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(926, 210)
-
-[node name="Brick28" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(813, 210)
-
-[node name="Brick29" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1150, 210)
-
-[node name="Brick30" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1037, 210)
-
-[node name="Brick31" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(254, 245)
-
-[node name="Brick32" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(141, 245)
-
-[node name="Brick33" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(478, 245)
-
-[node name="Brick34" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(365, 245)
-
-[node name="Brick35" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(702, 245)
-
-[node name="Brick36" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(589, 245)
-
-[node name="Brick37" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(926, 245)
-
-[node name="Brick38" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(813, 245)
-
-[node name="Brick39" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1150, 245)
-
-[node name="Brick40" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1037, 245)
-
-[node name="Brick41" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(254, 280)
-
-[node name="Brick42" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(141, 280)
-
-[node name="Brick43" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(478, 280)
-
-[node name="Brick44" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(365, 280)
-
-[node name="Brick45" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(702, 280)
-
-[node name="Brick46" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(589, 280)
-
-[node name="Brick47" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(926, 280)
-
-[node name="Brick48" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(813, 280)
-
-[node name="Brick49" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1150, 280)
-
-[node name="Brick50" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1037, 280)
-
-[node name="Brick51" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(254, 315)
-
-[node name="Brick52" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(141, 315)
-
-[node name="Brick53" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(478, 315)
-
-[node name="Brick54" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(365, 315)
-
-[node name="Brick55" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(702, 315)
-
-[node name="Brick56" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(589, 315)
-
-[node name="Brick57" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(926, 315)
-
-[node name="Brick58" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(813, 315)
-
-[node name="Brick59" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1150, 315)
-
-[node name="Brick60" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1037, 315)
-
-[node name="Brick61" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(255, 349)
-
-[node name="Brick62" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(142, 349)
-
-[node name="Brick63" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(479, 349)
-
-[node name="Brick64" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(366, 349)
-
-[node name="Brick65" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(703, 349)
-
-[node name="Brick66" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(590, 349)
-
-[node name="Brick67" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(927, 349)
-
-[node name="Brick68" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(814, 349)
-
-[node name="Brick69" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1151, 349)
-
-[node name="Brick70" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1038, 349)
-
-[node name="Brick71" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(255, 384)
-
-[node name="Brick72" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(142, 384)
-
-[node name="Brick73" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(479, 384)
-
-[node name="Brick74" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(366, 384)
-
-[node name="Brick75" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(703, 384)
-
-[node name="Brick76" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(590, 384)
-
-[node name="Brick77" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(927, 384)
-
-[node name="Brick78" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(814, 384)
-
-[node name="Brick79" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1151, 384)
-
-[node name="Brick80" parent="Bricks" instance=ExtResource("6_2tax7")]
-position = Vector2(1038, 384)
+[node name="Bricks" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 130.0
+offset_right = 1195.0
+offset_bottom = 401.0
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
@@ -399,28 +164,37 @@ grow_horizontal = 2
 pivot_offset = Vector2(640, 0)
 script = ExtResource("5_gwq80")
 
-[node name="Lives" type="Label" parent="HUD"]
+[node name="Score" type="Label" parent="HUD"]
 layout_mode = 0
-offset_left = 1084.0
-offset_top = 49.0
-offset_right = 1213.0
-offset_bottom = 108.0
+offset_left = 857.0
+offset_top = 47.0
+offset_right = 986.0
+offset_bottom = 106.0
 theme = SubResource("Theme_u4l5d")
-text = "1 Life"
+text = "9999"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Score" type="Label" parent="HUD"]
+[node name="HiScore" type="Label" parent="HUD"]
 layout_mode = 0
-offset_left = 59.0
-offset_top = 46.0
-offset_right = 188.0
-offset_bottom = 105.0
+offset_left = 1023.0
+offset_top = 47.0
+offset_right = 1216.0
+offset_bottom = 106.0
 theme = SubResource("Theme_u4l5d")
-text = "12"
+text = "High: 9999"
+horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="Hearts" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_left = 87.0
+offset_top = 51.0
+offset_right = 345.0
+offset_bottom = 110.0
+
 [node name="GameOver" type="Control" parent="."]
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -442,7 +216,16 @@ text = "Game Over"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="Restart" type="Button" parent="GameOver"]
+layout_mode = 0
+offset_left = 563.0
+offset_top = 531.0
+offset_right = 713.0
+offset_bottom = 583.0
+text = "Restart"
+
 [node name="GameWin" type="Control" parent="."]
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -466,3 +249,4 @@ vertical_alignment = 1
 
 [connection signal="body_entered" from="Catch" to="." method="_on_paddle_miss"]
 [connection signal="child_exiting_tree" from="Bricks" to="." method="_on_brick_collide"]
+[connection signal="button_down" from="GameOver/Restart" to="." method="restart"]
