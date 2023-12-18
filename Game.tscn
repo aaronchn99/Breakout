@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dec15bf0rcyj"]
+[gd_scene load_steps=12 format=3 uid="uid://dec15bf0rcyj"]
 
 [ext_resource type="PackedScene" uid="uid://duxv21xnjkro6" path="res://Assets/Paddle.tscn" id="1_m4ftr"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_nwu3w"]
 [ext_resource type="PackedScene" uid="uid://dfhxag8lv502" path="res://Assets/wall.tscn" id="2_8botx"]
 [ext_resource type="PackedScene" uid="uid://cd6e7xq0mf16u" path="res://Assets/Ball.tscn" id="3_ixu7q"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="5_gwq80"]
+[ext_resource type="Texture2D" uid="uid://bqsccya0v6e27" path="res://Assets/pause-solid.svg" id="6_132oj"]
+[ext_resource type="Script" path="res://Scripts/Pause.gd" id="6_h800u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3xs5"]
 size = Vector2(1400, 10)
@@ -193,8 +195,67 @@ offset_top = 51.0
 offset_right = 345.0
 offset_bottom = 110.0
 
-[node name="GameOver" type="Control" parent="."]
+[node name="Pause" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1277.0
+offset_bottom = 721.0
+script = ExtResource("6_h800u")
+
+[node name="PauseMenu" type="Control" parent="Pause"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="PauseTitle" type="Label" parent="Pause/PauseMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 176.0
+offset_right = 95.0
+offset_bottom = 235.0
+grow_horizontal = 2
+theme = SubResource("Theme_u4l5d")
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="Pause/PauseMenu"]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 523.0
+offset_right = 587.0
+offset_bottom = 575.0
+theme_override_font_sizes/font_size = 20
+text = "Restart"
+
+[node name="Back" type="Button" parent="Pause/PauseMenu"]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 524.0
+offset_right = 835.0
+offset_bottom = 576.0
+theme_override_font_sizes/font_size = 20
+text = "Back to Menu"
+
+[node name="PauseButton" type="Button" parent="Pause"]
 process_mode = 3
+layout_mode = 0
+offset_left = 28.0
+offset_top = 29.0
+offset_right = 77.0
+offset_bottom = 80.0
+icon = ExtResource("6_132oj")
+icon_alignment = 1
+expand_icon = true
+
+[node name="GameOver" type="Control" parent="."]
+process_mode = 2
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -213,19 +274,29 @@ offset_bottom = 235.0
 grow_horizontal = 2
 theme = SubResource("Theme_u4l5d")
 text = "Game Over"
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Restart" type="Button" parent="GameOver"]
 layout_mode = 0
-offset_left = 563.0
-offset_top = 531.0
-offset_right = 713.0
-offset_bottom = 583.0
+offset_left = 437.0
+offset_top = 523.0
+offset_right = 587.0
+offset_bottom = 575.0
+theme_override_font_sizes/font_size = 20
 text = "Restart"
 
+[node name="Back" type="Button" parent="GameOver"]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 524.0
+offset_right = 835.0
+offset_bottom = 576.0
+theme_override_font_sizes/font_size = 20
+text = "Back to Menu"
+
 [node name="GameWin" type="Control" parent="."]
-process_mode = 3
+process_mode = 2
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -244,9 +315,34 @@ offset_bottom = 235.0
 grow_horizontal = 2
 theme = SubResource("Theme_u4l5d")
 text = "Level Clear"
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="GameWin"]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 523.0
+offset_right = 587.0
+offset_bottom = 575.0
+theme_override_font_sizes/font_size = 20
+text = "Restart"
+
+[node name="Back" type="Button" parent="GameWin"]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 524.0
+offset_right = 835.0
+offset_bottom = 576.0
+theme_override_font_sizes/font_size = 20
+text = "Back to Menu"
 
 [connection signal="body_entered" from="Catch" to="." method="_on_paddle_miss"]
 [connection signal="child_exiting_tree" from="Bricks" to="." method="_on_brick_collide"]
+[connection signal="button_down" from="Pause/PauseMenu/Restart" to="." method="_on_paddle_miss" binds= [false]]
+[connection signal="button_up" from="Pause/PauseMenu/Restart" to="." method="restart"]
+[connection signal="button_down" from="Pause/PauseMenu/Back" to="." method="_back_to_menu"]
+[connection signal="button_down" from="Pause/PauseButton" to="Pause" method="_pause_toggle"]
 [connection signal="button_down" from="GameOver/Restart" to="." method="restart"]
+[connection signal="button_down" from="GameOver/Back" to="." method="_back_to_menu"]
+[connection signal="button_down" from="GameWin/Restart" to="." method="restart"]
+[connection signal="button_down" from="GameWin/Back" to="." method="_back_to_menu"]

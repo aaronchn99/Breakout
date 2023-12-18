@@ -67,10 +67,16 @@ func _on_brick_collide(body):
 
 func restart():
 	hi_score = max(hi_score, score)
-	get_tree().paused = false
 	$GameOver.visible = false
 	$GameWin.visible = false
+	$Pause/PauseMenu.visible = false
 	generate_map(brick_map)
 	lives = MAX_LIVES
 	score = 0
 	$Ball.reset()
+	get_tree().paused = false
+
+func _back_to_menu():
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+	queue_free()

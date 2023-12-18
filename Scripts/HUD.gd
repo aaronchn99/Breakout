@@ -4,9 +4,9 @@ var heart = preload("res://Assets/heart.tscn")
 var heart5 = preload("res://Assets/heart_5.tscn")
 
 func _process(delta):
-	update_hearts($/root/Game.lives)
-	$Score.text = str($/root/Game.score)
-	$HiScore.text = 'High: '+str($/root/Game.hi_score)
+	update_hearts(get_node('..').lives)
+	$Score.text = str(get_node('..').score)
+	$HiScore.text = 'High: '+str(get_node('..').hi_score)
 
 func update_hearts(lives):
 	var lives_shown = len(get_tree().get_nodes_in_group('heart5')) * 5 + len(get_tree().get_nodes_in_group('heart'))
