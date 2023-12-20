@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dec15bf0rcyj"]
+[gd_scene load_steps=11 format=3 uid="uid://dec15bf0rcyj"]
 
 [ext_resource type="PackedScene" uid="uid://duxv21xnjkro6" path="res://Assets/Paddle.tscn" id="1_m4ftr"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_nwu3w"]
@@ -14,94 +14,7 @@ size = Vector2(1400, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ea4wm"]
 size = Vector2(10, 150)
 
-[sub_resource type="FontFile" id="FontFile_6phrg"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/40/0 = Vector2(0, 0)
-cache/0/10/0/ascent = 0.0
-cache/0/10/0/descent = 0.0
-cache/0/10/0/underline_position = 0.0
-cache/0/10/0/underline_thickness = 0.0
-cache/0/10/0/scale = 1.0
-cache/0/10/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/10/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/10/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/10/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/10/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/10/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/10/0/kerning_overrides/40/0 = Vector2(0, 0)
-cache/0/20/0/ascent = 0.0
-cache/0/20/0/descent = 0.0
-cache/0/20/0/underline_position = 0.0
-cache/0/20/0/underline_thickness = 0.0
-cache/0/20/0/scale = 1.0
-cache/0/20/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/40/0 = Vector2(0, 0)
-cache/0/30/0/ascent = 0.0
-cache/0/30/0/descent = 0.0
-cache/0/30/0/underline_position = 0.0
-cache/0/30/0/underline_thickness = 0.0
-cache/0/30/0/scale = 1.0
-cache/0/30/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/30/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/30/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/30/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/30/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/30/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/30/0/kerning_overrides/40/0 = Vector2(0, 0)
-cache/0/80/0/ascent = 0.0
-cache/0/80/0/descent = 0.0
-cache/0/80/0/underline_position = 0.0
-cache/0/80/0/underline_thickness = 0.0
-cache/0/80/0/scale = 1.0
-cache/0/80/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/40/0 = Vector2(0, 0)
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/40/0 = Vector2(0, 0)
-cache/0/40/0/ascent = 0.0
-cache/0/40/0/descent = 0.0
-cache/0/40/0/underline_position = 0.0
-cache/0/40/0/underline_thickness = 0.0
-cache/0/40/0/scale = 1.0
-cache/0/40/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/40/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/40/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/40/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/40/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/40/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/40/0/kerning_overrides/40/0 = Vector2(0, 0)
-
 [sub_resource type="Theme" id="Theme_u4l5d"]
-default_font = SubResource("FontFile_6phrg")
 default_font_size = 40
 
 [node name="Game" type="Node2D"]
