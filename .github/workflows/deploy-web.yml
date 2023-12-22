@@ -6,4 +6,8 @@ on:
 
 jobs:
     call-deploy-web-with-coi:
+        permissions:
+            contents: read
+            pages: write
+            id-token: write
         uses: aaronchn99/Pong/.github/workflows/deploy-web-with-coi.yml@main
