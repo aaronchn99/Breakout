@@ -1,0 +1,9 @@
+name: build-deploy-web
+
+on:
+    push:
+        branches: [ 'main' ]
+
+jobs:
+    call-deploy-web-with-coi:
+        uses: aaronchn99/Pong/.github/workflows/deploy-web-with-coi.yml
