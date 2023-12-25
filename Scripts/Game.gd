@@ -7,26 +7,7 @@ var hi_score = 0
 
 var brick_p = preload("res://Assets/brick.tscn")
 
-var brick_map = {
-	'rows': 8,
-	'columns': 10,
-	'gap': 15,
-	'colors': {
-		'r': '#f00',
-		'g': '#0f0',
-		'b': '#00f',
-	},
-	'bricks': [
-		[0,0,'r',10],
-		[0,1,'g',10],
-		[0,2,'b',10],
-		[0,3,'r',10],
-		[0,4,'g',10],
-		[0,5,'b',10],
-		[0,6,'r',10],
-		[0,7,'g',10],
-	],
-}
+var brick_map : Dictionary
 
 func generate_map(brick_map):
 	for b in get_tree().get_nodes_in_group('brick'):

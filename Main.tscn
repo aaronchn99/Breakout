@@ -25,6 +25,7 @@ offset_right = 1283.0
 offset_bottom = 723.0
 theme = SubResource("Theme_v7ltp")
 script = ExtResource("1_jwnvp")
+LEVEL_FILE = "res://lvls.json"
 
 [node name="Title" type="Label" parent="MainMenu"]
 layout_mode = 0
@@ -65,5 +66,32 @@ offset_bottom = 23.421
 theme = SubResource("Theme_7heun")
 text = "Quit"
 
-[connection signal="button_down" from="MainMenu/PlayButton" to="MainMenu" method="_play"]
+[node name="LevelMenu" type="VFlowContainer" parent="MainMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 637.0
+offset_top = 297.0
+offset_right = -591.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 50
+alignment = 1
+
+[node name="Levels" type="HFlowContainer" parent="MainMenu/LevelMenu"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 50
+alignment = 1
+
+[node name="BackButton" type="Button" parent="MainMenu/LevelMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+
+[connection signal="button_down" from="MainMenu/PlayButton" to="MainMenu" method="_level_menu"]
 [connection signal="button_down" from="MainMenu/QuitButton" to="MainMenu" method="_quit"]
+[connection signal="button_down" from="MainMenu/LevelMenu/BackButton" to="MainMenu" method="_main_menu"]
