@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cproiw2hcmy8o"]
+
+[ext_resource type="StyleBox" uid="uid://dl61m1sc7wakw" path="res://Theme/TextButton/disabled.tres" id="1_yklgl"]
+[ext_resource type="StyleBox" uid="uid://fti603skf0ec" path="res://Theme/TextButton/focus.tres" id="2_fnywa"]
+[ext_resource type="StyleBox" uid="uid://0374ahvj7vpk" path="res://Theme/TextButton/hover.tres" id="3_m3bf7"]
+[ext_resource type="StyleBox" uid="uid://b4ii7jf3nrl3o" path="res://Theme/TextButton/normal.tres" id="4_0hi1q"]
+[ext_resource type="StyleBox" uid="uid://8fb2sk0do1eb" path="res://Theme/TextButton/pressed.tres" id="5_8a28s"]
+[ext_resource type="StyleBox" uid="uid://cd8jvjlfx0m83" path="res://Theme/IconButton/disabled.tres" id="6_7c22x"]
+[ext_resource type="StyleBox" uid="uid://jaeeujhaoa41" path="res://Theme/IconButton/focus.tres" id="7_frgq1"]
+[ext_resource type="StyleBox" uid="uid://da38mj5gshrdf" path="res://Theme/IconButton/hover.tres" id="8_m58n7"]
+[ext_resource type="StyleBox" uid="uid://b232ab5mde8fu" path="res://Theme/IconButton/normal.tres" id="9_siyqs"]
+[ext_resource type="StyleBox" uid="uid://88d78q5rict7" path="res://Theme/IconButton/pressed.tres" id="10_wtfi6"]
+
+[resource]
+Button/font_sizes/font_size = 25
+Button/styles/disabled = ExtResource("1_yklgl")
+Button/styles/focus = ExtResource("2_fnywa")
+Button/styles/hover = ExtResource("3_m3bf7")
+Button/styles/normal = ExtResource("4_0hi1q")
+Button/styles/pressed = ExtResource("5_8a28s")
+HeaderLarge/font_sizes/font_size = 40
+HeaderMedium/font_sizes/font_size = 30
+HeaderSmall/font_sizes/font_size = 25
+IconButton/base_type = &"Button"
+IconButton/styles/disabled = ExtResource("6_7c22x")
+IconButton/styles/focus = ExtResource("7_frgq1")
+IconButton/styles/hover = ExtResource("8_m58n7")
+IconButton/styles/normal = ExtResource("9_siyqs")
+IconButton/styles/pressed = ExtResource("10_wtfi6")
+Label/font_sizes/font_size = 20

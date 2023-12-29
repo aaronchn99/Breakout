@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dfhxag8lv502" path="res://Assets/wall.tscn" id="2_8botx"]
 [ext_resource type="PackedScene" uid="uid://cd6e7xq0mf16u" path="res://Assets/Ball.tscn" id="3_ixu7q"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="5_gwq80"]
+[ext_resource type="Theme" uid="uid://cproiw2hcmy8o" path="res://Theme/Main.tres" id="5_u8dma"]
 [ext_resource type="Texture2D" uid="uid://bqsccya0v6e27" path="res://Assets/pause-solid.svg" id="6_132oj"]
 [ext_resource type="Script" path="res://Scripts/Pause.gd" id="6_h800u"]
 
@@ -13,9 +14,6 @@ size = Vector2(1400, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ea4wm"]
 size = Vector2(10, 150)
-
-[sub_resource type="Theme" id="Theme_u4l5d"]
-default_font_size = 40
 
 [node name="Game" type="Node2D"]
 process_priority = 1
@@ -77,6 +75,7 @@ offset_right = 1280.0
 offset_bottom = 133.0
 grow_horizontal = 2
 pivot_offset = Vector2(640, 0)
+theme = ExtResource("5_u8dma")
 script = ExtResource("5_gwq80")
 
 [node name="Score" type="Label" parent="HUD"]
@@ -85,7 +84,7 @@ offset_left = 857.0
 offset_top = 47.0
 offset_right = 986.0
 offset_bottom = 106.0
-theme = SubResource("Theme_u4l5d")
+theme_type_variation = &"HeaderMedium"
 text = "9999"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -96,7 +95,7 @@ offset_left = 1023.0
 offset_top = 47.0
 offset_right = 1216.0
 offset_bottom = 106.0
-theme = SubResource("Theme_u4l5d")
+theme_type_variation = &"HeaderMedium"
 text = "High: 9999"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -113,6 +112,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1277.0
 offset_bottom = 721.0
+theme = ExtResource("5_u8dma")
 script = ExtResource("6_h800u")
 
 [node name="PauseMenu" type="Control" parent="Pause"]
@@ -133,7 +133,7 @@ offset_top = 176.0
 offset_right = 95.0
 offset_bottom = 235.0
 grow_horizontal = 2
-theme = SubResource("Theme_u4l5d")
+theme_type_variation = &"HeaderLarge"
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -144,7 +144,6 @@ offset_left = 437.0
 offset_top = 523.0
 offset_right = 587.0
 offset_bottom = 575.0
-theme_override_font_sizes/font_size = 20
 text = "Restart"
 
 [node name="Back" type="Button" parent="Pause/PauseMenu"]
@@ -153,7 +152,6 @@ offset_left = 685.0
 offset_top = 524.0
 offset_right = 835.0
 offset_bottom = 576.0
-theme_override_font_sizes/font_size = 20
 text = "Back to Menu"
 
 [node name="PauseButton" type="Button" parent="Pause"]
@@ -163,6 +161,7 @@ offset_left = 28.0
 offset_top = 29.0
 offset_right = 77.0
 offset_bottom = 80.0
+theme_type_variation = &"IconButton"
 icon = ExtResource("6_132oj")
 icon_alignment = 1
 expand_icon = true
@@ -174,6 +173,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
+theme = ExtResource("5_u8dma")
 
 [node name="GameOverTitle" type="Label" parent="GameOver"]
 layout_mode = 1
@@ -185,7 +185,7 @@ offset_top = 176.0
 offset_right = 95.0
 offset_bottom = 235.0
 grow_horizontal = 2
-theme = SubResource("Theme_u4l5d")
+theme_type_variation = &"HeaderLarge"
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -196,7 +196,6 @@ offset_left = 437.0
 offset_top = 523.0
 offset_right = 587.0
 offset_bottom = 575.0
-theme_override_font_sizes/font_size = 20
 text = "Restart"
 
 [node name="Back" type="Button" parent="GameOver"]
@@ -205,7 +204,6 @@ offset_left = 685.0
 offset_top = 524.0
 offset_right = 835.0
 offset_bottom = 576.0
-theme_override_font_sizes/font_size = 20
 text = "Back to Menu"
 
 [node name="GameWin" type="Control" parent="."]
@@ -215,6 +213,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
+theme = ExtResource("5_u8dma")
 
 [node name="GameWinTitle" type="Label" parent="GameWin"]
 layout_mode = 1
@@ -226,7 +225,7 @@ offset_top = 176.0
 offset_right = 95.0
 offset_bottom = 235.0
 grow_horizontal = 2
-theme = SubResource("Theme_u4l5d")
+theme_type_variation = &"HeaderLarge"
 text = "Level Clear"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -237,7 +236,6 @@ offset_left = 437.0
 offset_top = 523.0
 offset_right = 587.0
 offset_bottom = 575.0
-theme_override_font_sizes/font_size = 20
 text = "Restart"
 
 [node name="Back" type="Button" parent="GameWin"]
@@ -246,7 +244,6 @@ offset_left = 685.0
 offset_top = 524.0
 offset_right = 835.0
 offset_bottom = 576.0
-theme_override_font_sizes/font_size = 20
 text = "Back to Menu"
 
 [connection signal="body_entered" from="Catch" to="." method="_on_paddle_miss"]
