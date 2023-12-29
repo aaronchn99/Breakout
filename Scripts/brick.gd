@@ -1,5 +1,11 @@
 extends RigidBody2D
 
+var breakable = true :
+	set(breakable):
+		collision_layer = 4
+		if not breakable:
+			collision_layer = 2
+			set_color(Color.WHITE)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

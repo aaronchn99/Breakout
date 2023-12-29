@@ -27,7 +27,7 @@ func _physics_process(delta):
 			velocity = velocity.bounce(collide_info.get_normal())
 			collide_sound.set_pitch_scale(1)
 		
-		if Collider.get_collision_layer() == 4:
+		if Collider.get_collision_layer() == 4:	# Breakable Bricks
 			Collider.queue_free()
 			velocity *= start_speed+SPEED_UP
 			velocity /= start_speed

@@ -12,7 +12,7 @@
             { "pos": [0,0], "color": "r", "repeat": 10},
             { "pos": [0,1], "color": "g", "repeat": 10},
             { "pos": [0,2], "color": "b", "repeat": 10},
-            { "pos": [0,3], "color": "r", "repeat": 10},
+            { "pos": [0,3], "color": "r", "repeat": 10, "breakable": false},
             { "pos": [0,4], "color": "g", "repeat": 10},
             { "pos": [0,5], "color": "b", "repeat": 10},
             { "pos": [0,6], "color": "r", "repeat": 10},
