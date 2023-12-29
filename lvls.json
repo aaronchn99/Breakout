@@ -1,6 +1,6 @@
 [
     {
-        "rows": 8,
+        "rows": 9,
         "columns": 10,
         "gap": 15,
         "colors": {
@@ -9,18 +9,19 @@
             "b": "#00f"
         },
         "bricks": [
-            [0,0,"r",10],
-            [0,1,"g",10],
-            [0,2,"b",10],
-            [0,3,"r",10],
-            [0,4,"g",10],
-            [0,5,"b",10],
-            [0,6,"r",10],
-            [0,7,"b",10]
+            { "pos": [0,0], "color": "r", "repeat": 10},
+            { "pos": [0,1], "color": "g", "repeat": 10},
+            { "pos": [0,2], "color": "b", "repeat": 10},
+            { "pos": [0,3], "color": "r", "repeat": 10},
+            { "pos": [0,4], "color": "g", "repeat": 10},
+            { "pos": [0,5], "color": "b", "repeat": 10},
+            { "pos": [0,6], "color": "r", "repeat": 10},
+            { "pos": [0,7], "color": "g", "repeat": 10},
+            { "pos": [0,8], "color": "b", "repeat": 10}
         ]
     },
     {
-        "rows": 8,
+        "rows": 9,
         "columns": 10,
         "gap": 15,
         "colors": {
@@ -29,18 +30,19 @@
             "b": "#00f"
         },
         "bricks": [
-            [0,0,"r",10],
-            [0,1,"g",10],
-            [0,2,"b",10],
-            [0,3,"r",10],
-            [0,4,"g",10],
-            [0,5,"b",10],
-            [0,6,"r",10],
-            [0,7,"g",10]
+            { "pos": [0,0], "color": "r", "repeat": 10},
+            { "pos": [0,1], "color": "r", "repeat": 10},
+            { "pos": [0,2], "color": "r", "repeat": 10},
+            { "pos": [0,3], "color": "r", "repeat": 10},
+            { "pos": [0,4], "color": "r", "repeat": 10},
+            { "pos": [0,5], "color": "r", "repeat": 10},
+            { "pos": [0,6], "color": "r", "repeat": 10},
+            { "pos": [0,7], "color": "r", "repeat": 10},
+            { "pos": [0,8], "color": "r", "repeat": 10}
         ]
     },
     {
-        "rows": 8,
+        "rows": 9,
         "columns": 10,
         "gap": 15,
         "colors": {
@@ -49,14 +51,15 @@
             "b": "#00f"
         },
         "bricks": [
-            [0,0,"r",10],
-            [0,1,"g",10],
-            [0,2,"b",10],
-            [0,3,"r",10],
-            [0,4,"g",10],
-            [0,5,"b",10],
-            [0,6,"r",10],
-            [0,7,"r",10]
+            { "pos": [0,0], "color": "r", "repeat": 10},
+            { "pos": [0,1], "color": "r", "repeat": 10},
+            { "pos": [0,2], "color": "r", "repeat": 10},
+            { "pos": [0,3], "color": "r", "repeat": 10},
+            { "pos": [0,4], "color": "r", "repeat": 10},
+            { "pos": [0,5], "color": "r", "repeat": 10},
+            { "pos": [0,6], "color": "r", "repeat": 10},
+            { "pos": [0,7], "color": "r", "repeat": 10},
+            { "pos": [0,8], "color": "r", "repeat": 10}
         ]
     }
 ]

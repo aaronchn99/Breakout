@@ -17,12 +17,13 @@ func generate_map(brick_map):
 	var gap = brick_map.gap
 	var w = ($Bricks.size.x + gap) / brick_map.columns - gap
 	var h = ($Bricks.size.y + gap) / brick_map.rows - gap
-	for b in brick_map.bricks:
-		var repeat = 1 if len(b) < 4 else b[3]
+	for brick_data in brick_map.bricks:
+		var repeat = 1 if not 'repeat' in brick_data else brick_data.repeat
+		var b = brick_data.pos
 		for i in range(repeat):
 			var brick = brick_p.instantiate()
 			$Bricks.add_child(brick)
-			brick.set_color(Color(brick_map.colors[b[2]]))
+			brick.set_color(Color(brick_map.colors[brick_data.color]))
 			brick.set_size(w, h)
 			brick.position = Vector2((b[0]+i)*(w+gap)+w/2,b[1]*(h+gap)+h/2)
 
