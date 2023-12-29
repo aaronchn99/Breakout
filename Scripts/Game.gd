@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @export var MAX_LIVES = 3
 var lives
@@ -37,7 +37,8 @@ func _process(delta):
 		$GameWin.visible = true
 		get_tree().paused = true
 
-func _on_paddle_miss(body):
+# Called by Pause Restart to reset the ball
+func _on_paddle_miss(body = null):
 	print("Paddle Missed :(")
 	lives -= 1
 	$Ball.reset()

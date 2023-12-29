@@ -15,8 +15,11 @@ size = Vector2(1400, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ea4wm"]
 size = Vector2(10, 150)
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Control"]
 process_priority = 1
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("5_u8dma")
 script = ExtResource("1_nwu3w")
 
 [node name="Paddle" parent="." instance=ExtResource("1_m4ftr")]
@@ -67,7 +70,7 @@ offset_right = 1195.0
 offset_bottom = 401.0
 
 [node name="HUD" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -248,7 +251,7 @@ text = "Back to Menu"
 
 [connection signal="body_entered" from="Catch" to="." method="_on_paddle_miss"]
 [connection signal="child_exiting_tree" from="Bricks" to="." method="_on_brick_collide"]
-[connection signal="button_down" from="Pause/PauseMenu/Restart" to="." method="_on_paddle_miss" binds= [false]]
+[connection signal="button_down" from="Pause/PauseMenu/Restart" to="." method="_on_paddle_miss"]
 [connection signal="button_up" from="Pause/PauseMenu/Restart" to="." method="restart"]
 [connection signal="button_down" from="Pause/PauseMenu/Back" to="." method="_back_to_menu"]
 [connection signal="button_down" from="Pause/PauseButton" to="Pause" method="_pause_toggle"]
