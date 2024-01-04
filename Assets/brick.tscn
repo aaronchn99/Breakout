@@ -6,10 +6,12 @@
 size = Vector2(100, 20)
 
 [sub_resource type="Gradient" id="Gradient_qtf4v"]
+resource_local_to_scene = true
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(1, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_rxula"]
+resource_local_to_scene = true
 gradient = SubResource("Gradient_qtf4v")
 width = 1
 
