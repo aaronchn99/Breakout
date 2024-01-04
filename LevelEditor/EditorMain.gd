@@ -28,7 +28,11 @@ var selected_brick:
 		brick = create_brick(brick_types[i], coords.x, coords.y, color)
 		selected_brick = brick
 
-var gap : float
+var gap : float:
+	set(val):
+		level_list[selected_level].gap = val
+		$EditPanel/Gap/SpinBox.set_value_no_signal(val)
+		gap = val
 var rows : int:
 	set(val):
 		level_list[selected_level].rows = val
@@ -142,4 +146,8 @@ func on_row_change(val):
 
 func on_col_change(val):
 	columns = val
+	generate_map(level_list[selected_level])
+
+func on_gap_change(val):
+	gap = val
 	generate_map(level_list[selected_level])

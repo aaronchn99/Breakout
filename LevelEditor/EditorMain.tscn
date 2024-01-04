@@ -280,6 +280,30 @@ offset_bottom = 46.0
 alignment = 2
 update_on_text_changed = true
 
+[node name="Gap" type="Control" parent="EditPanel"]
+anchors_preset = 0
+offset_left = 625.0
+offset_top = 85.0
+offset_right = 796.0
+offset_bottom = 134.0
+
+[node name="Label" type="Label" parent="EditPanel/Gap"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = 62.0
+offset_bottom = 35.0
+text = "Gap"
+
+[node name="SpinBox" type="SpinBox" parent="EditPanel/Gap"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 3.0
+offset_right = 166.063
+offset_bottom = 46.0
+alignment = 2
+update_on_text_changed = true
+
 [node name="AreaWidth" type="Control" parent="EditPanel"]
 anchors_preset = 0
 offset_left = 33.0
@@ -346,3 +370,4 @@ horizontal_alignment = 2
 [connection signal="item_selected" from="EditPanel/Level/OptionButton" to="." method="on_level_change"]
 [connection signal="value_changed" from="EditPanel/Row/SpinBox" to="." method="on_row_change"]
 [connection signal="value_changed" from="EditPanel/Column/SpinBox" to="." method="on_col_change"]
+[connection signal="value_changed" from="EditPanel/Gap/SpinBox" to="." method="on_gap_change"]
