@@ -6,6 +6,7 @@ var breakable = true :
 		if not breakable:
 			collision_layer = 2
 			set_color(Color.WHITE)
+			remove_from_group('breakable')
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

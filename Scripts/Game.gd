@@ -36,7 +36,7 @@ func _process(delta):
 	if lives == 0 and not $GameOver.visible:
 		$GameOver.visible = true
 		get_tree().paused = true
-	elif $Bricks.get_child_count() == 0 and not $GameWin.visible:
+	elif len(get_tree().get_nodes_in_group('breakable')) == 0 and not $GameWin.visible:
 		$GameWin.visible = true
 		get_tree().paused = true
 
