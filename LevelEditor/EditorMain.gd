@@ -95,7 +95,7 @@ func generate_map(brick_map):
 		for i in range(repeat):
 			var color = null
 			if b[0]+i >= columns: continue
-			if 'color' in brick_data:
+			if 'color' in brick_data and brick_data.color != null:
 				color = Color(brick_map.colors[brick_data.color])
 			create_brick(brick_p, b[0]+i, b[1], color)
 
@@ -124,16 +124,19 @@ func on_brick_gui_event(event : InputEvent, brick):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			selected_brick = brick
+			level_list[selected_level].dirty = true
 
 # When BrickType option changed
 func on_change_brick_type(type):
 	$EditPanel/Color.visible = type == 1
 	if selected_brick:
 		selected_brick = selected_brick
+		level_list[selected_level].dirty = true
 
 func on_color_change(color : Color):
 	if selected_brick:
 		selected_brick = selected_brick
+		level_list[selected_level].dirty = true
 
 func on_level_change(level):
 	if len(brick_array):
@@ -144,26 +147,30 @@ func on_level_change(level):
 func on_row_change(val):
 	rows = val
 	generate_map(level_list[selected_level])
+	level_list[selected_level].dirty = true
 
 func on_col_change(val):
 	columns = val
 	generate_map(level_list[selected_level])
+	level_list[selected_level].dirty = true
 
 func on_gap_change(val):
 	gap = val
 	generate_map(level_list[selected_level])
+	level_list[selected_level].dirty = true
 
 # Stores currently displayed bricks to level_list. Called on level change and save
 func store_level():
+	if not 'dirty' in level_list[selected_level]: return
 	var colors = {}
 	var bricks = []
 	for i in range(len(brick_array)):
 		for j in range(len(brick_array[i])):
 			if brick_array[i][j].is_in_group('empty'): continue
 			var brick = {'pos': [j, i]}
-			if brick_array[i][j].is_in_group('unbreakable'):
-				brick.breakable = false
-			else:
+			brick.breakable = brick_array[i][j].is_in_group('breakable')
+			brick.color = null
+			if brick.breakable:
 				var color_code = brick_array[i][j].color.to_html()
 				brick.color = color_code
 				colors[color_code] = '#' + color_code
@@ -171,7 +178,35 @@ func store_level():
 	level_list[selected_level].colors = colors
 	level_list[selected_level].bricks = bricks
 
-
-# func save():
-# 	for i in range(len(level_list)):
-		
+# 
+func save():
+	store_level()
+	var is_identical = func(b1, b2):
+		return b1.color == b2.color and b1.breakable == b2.breakable
+	# RLE Compression
+	for i in range(len(level_list)):
+		if not 'dirty' in level_list[i]: continue	# Skip unaffected levels
+		level_list[i].erase('dirty')
+		var new_bricks = []
+		var leading = null
+		var count = 1
+		for b in level_list[i].bricks:
+			if leading == null:
+				leading = b
+			elif is_identical.call(leading, b) and leading.pos[1] == b.pos[1] \
+				and leading.pos[0] + count == b.pos[0]:
+				count += 1
+			else:
+				if count > 1: leading.repeat = count
+				new_bricks.append(leading)
+				leading = b
+				count = 1
+		if leading != null:
+			if count > 1: leading.repeat = count
+			new_bricks.append(leading)
+		level_list[i].bricks = new_bricks
+	# Save to json file
+	var f = FileAccess.open(LEVEL_FILE+'tmp', FileAccess.WRITE)
+	var json = JSON.stringify(level_list, '\t')
+	f.store_string(json)
+	f.close()

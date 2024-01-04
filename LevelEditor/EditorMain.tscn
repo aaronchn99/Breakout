@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck8vvaytuswma"]
+[gd_scene load_steps=7 format=3 uid="uid://ck8vvaytuswma"]
 
 [ext_resource type="Theme" uid="uid://cproiw2hcmy8o" path="res://Theme/Main.tres" id="1_til1f"]
 [ext_resource type="Script" path="res://LevelEditor/EditorMain.gd" id="2_b0jtg"]
 [ext_resource type="PackedScene" uid="uid://dfhxag8lv502" path="res://Assets/wall.tscn" id="2_r3yxh"]
 [ext_resource type="PackedScene" uid="uid://cd6e7xq0mf16u" path="res://Assets/Ball.tscn" id="3_u5dmo"]
+[ext_resource type="Texture2D" uid="uid://bydrjlbr0d2pm" path="res://LevelEditor/floppy-disk-solid.svg" id="6_0a3xi"]
 [ext_resource type="Texture2D" uid="uid://bqsccya0v6e27" path="res://Assets/pause-solid.svg" id="6_8t5ts"]
 
 [node name="EditorMain" type="Control"]
@@ -305,6 +306,7 @@ alignment = 2
 update_on_text_changed = true
 
 [node name="AreaWidth" type="Control" parent="EditPanel"]
+visible = false
 anchors_preset = 0
 offset_left = 33.0
 offset_top = 175.0
@@ -334,6 +336,7 @@ text = "1280"
 horizontal_alignment = 2
 
 [node name="AreaHeight" type="Control" parent="EditPanel"]
+visible = false
 anchors_preset = 0
 offset_left = 604.0
 offset_top = 175.0
@@ -362,6 +365,15 @@ offset_bottom = 30.0
 text = "1280"
 horizontal_alignment = 2
 
+[node name="Save" type="Button" parent="EditPanel"]
+layout_mode = 0
+offset_left = 998.0
+offset_top = 161.0
+offset_right = 1094.0
+offset_bottom = 204.0
+text = "Save"
+icon = ExtResource("6_0a3xi")
+
 [connection signal="button_down" from="Pause/PauseMenu/Restart" to="." method="_on_paddle_miss"]
 [connection signal="button_up" from="Pause/PauseMenu/Restart" to="." method="restart"]
 [connection signal="button_down" from="Pause/PauseMenu/Back" to="." method="_back_to_menu"]
@@ -371,3 +383,4 @@ horizontal_alignment = 2
 [connection signal="value_changed" from="EditPanel/Row/SpinBox" to="." method="on_row_change"]
 [connection signal="value_changed" from="EditPanel/Column/SpinBox" to="." method="on_col_change"]
 [connection signal="value_changed" from="EditPanel/Gap/SpinBox" to="." method="on_gap_change"]
+[connection signal="pressed" from="EditPanel/Save" to="." method="save"]
