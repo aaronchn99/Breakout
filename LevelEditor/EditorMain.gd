@@ -14,11 +14,26 @@ var selected_brick:
 		$Bricks/CursorRect.size = brick.size + 3*Vector2.ONE
 		$Bricks/CursorRect.visible = true
 
-# Instantiates given preloaded node, connecting signals
-# 	Returns new instance
-func create_brick(prefab):
+var gap : float
+var rows : int
+var columns : int
+var brick_w : float
+var brick_h : float
+
+# Brick Factory method
+# 	prefab	Resource	Preloaded scene of brick
+#	c		int 		column (or x coordinate)
+#	r		int			row (or y coordinate)
+#	Returns instantiated brick Node
+func create_brick(prefab : Resource, c : int, r : int):
 	var brick = prefab.instantiate()
 	$Bricks.add_child(brick)
+	brick.set_size(Vector2(brick_w, brick_h))
+	brick.position = Vector2(c*(brick_w+gap),r*(brick_h+gap))
+	brick.set_meta('Coordinates', Vector2i(c, r))
+	if brick_array[r][c]:
+		brick_array[r][c].queue_free()
+	brick_array[r][c] = brick
 	brick.gui_input.connect(on_brick_gui_event.bind(brick))
 	return brick
 
@@ -27,22 +42,23 @@ func generate_map(brick_map):
 	for b in get_tree().get_nodes_in_group('brick'):
 		$Bricks.remove_child(b)
 		b.queue_free()
-	brick_array = []
 	$Bricks/CursorRect.visible = false
 	
-	var gap = brick_map.gap
-	var w = ($Bricks.size.x + gap) / brick_map.columns - gap
-	var h = ($Bricks.size.y + gap) / brick_map.rows - gap
+	gap = brick_map.gap
+	rows = brick_map.rows
+	columns = brick_map.columns
+	brick_w = ($Bricks.size.x + gap) / columns - gap
+	brick_h = ($Bricks.size.y + gap) / rows - gap
+	brick_array = range(rows).map(func(r):
+		return range(columns).map(func(c):
+			return null
+		)
+	)
 	
 	# init with empty bricks
-	for r in range(brick_map.rows):
-		var brick_row = []
-		for c in range(brick_map.columns):
-			var brick = create_brick(empty_brick)
-			brick.set_size(Vector2(w, h))
-			brick.position = Vector2(c*(w+gap),r*(h+gap))
-			brick_row.append(brick)
-		brick_array.append(brick_row)
+	for r in range(rows):
+		for c in range(columns):
+			var brick = create_brick(empty_brick, c, r)
 	
 	for brick_data in brick_map.bricks:
 		var repeat = 1 if not 'repeat' in brick_data else brick_data.repeat
@@ -51,14 +67,9 @@ func generate_map(brick_map):
 		if 'breakable' in brick_data and not brick_data.breakable:
 			brick_p = unbreak_brick
 		for i in range(repeat):
-			var brick = create_brick(brick_p)
+			var brick = create_brick(brick_p, b[0]+i, b[1])
 			if 'color' in brick_data:
 				brick.set_color(Color(brick_map.colors[brick_data.color]))
-			brick.set_size(Vector2(w, h))
-			brick.position = Vector2((b[0]+i)*(w+gap),b[1]*(h+gap))
-			if brick_array[b[1]][b[0]+i]:
-				brick_array[b[1]][b[0]+i].queue_free()
-			brick_array[b[1]][b[0]+i] = brick
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -76,6 +87,7 @@ func _ready():
 func _process(delta):
 	pass
 
+# When a brick has been clicked
 func on_brick_gui_event(event : InputEvent, brick):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:

@@ -10,3 +10,4 @@ mouse_default_cursor_shape = 2
 texture = ExtResource("1_gjjgm")
 expand_mode = 1
 stretch_mode = 1
+metadata/Coordinates = Vector2i(0, 0)
