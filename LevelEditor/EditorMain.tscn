@@ -1,0 +1,222 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck8vvaytuswma"]
+
+[ext_resource type="Theme" uid="uid://cproiw2hcmy8o" path="res://Theme/Main.tres" id="1_til1f"]
+[ext_resource type="Script" path="res://LevelEditor/EditorMain.gd" id="2_b0jtg"]
+[ext_resource type="PackedScene" uid="uid://dfhxag8lv502" path="res://Assets/wall.tscn" id="2_r3yxh"]
+[ext_resource type="PackedScene" uid="uid://cd6e7xq0mf16u" path="res://Assets/Ball.tscn" id="3_u5dmo"]
+[ext_resource type="Texture2D" uid="uid://bqsccya0v6e27" path="res://Assets/pause-solid.svg" id="6_8t5ts"]
+
+[node name="EditorMain" type="Control"]
+process_priority = 1
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_til1f")
+script = ExtResource("2_b0jtg")
+LEVEL_FILE = "res://lvls.json"
+
+[node name="Wall" parent="." instance=ExtResource("2_r3yxh")]
+position = Vector2(1260, 360)
+scale = Vector2(20, 672)
+
+[node name="Wall2" parent="." instance=ExtResource("2_r3yxh")]
+position = Vector2(20, 360)
+scale = Vector2(20, 672)
+
+[node name="Wall3" parent="." instance=ExtResource("2_r3yxh")]
+position = Vector2(640, 19)
+rotation = 1.5708
+scale = Vector2(20, 1260)
+
+[node name="Ball" parent="." instance=ExtResource("3_u5dmo")]
+position = Vector2(643, 485)
+script = null
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 1280.0
+offset_bottom = 133.0
+grow_horizontal = 2
+pivot_offset = Vector2(640, 0)
+theme = ExtResource("1_til1f")
+
+[node name="Score" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 857.0
+offset_top = 47.0
+offset_right = 986.0
+offset_bottom = 106.0
+theme_type_variation = &"HeaderMedium"
+text = "9999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HiScore" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 1023.0
+offset_top = 47.0
+offset_right = 1216.0
+offset_bottom = 106.0
+theme_type_variation = &"HeaderMedium"
+text = "High: 9999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Hearts" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_left = 87.0
+offset_top = 51.0
+offset_right = 345.0
+offset_bottom = 110.0
+
+[node name="Pause" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1277.0
+offset_bottom = 721.0
+theme = ExtResource("1_til1f")
+
+[node name="PauseMenu" type="Control" parent="Pause"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="PauseTitle" type="Label" parent="Pause/PauseMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 176.0
+offset_right = 95.0
+offset_bottom = 235.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="Pause/PauseMenu"]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 523.0
+offset_right = 587.0
+offset_bottom = 575.0
+text = "Restart"
+
+[node name="Back" type="Button" parent="Pause/PauseMenu"]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 524.0
+offset_right = 835.0
+offset_bottom = 576.0
+text = "Back to Menu"
+
+[node name="PauseButton" type="Button" parent="Pause"]
+process_mode = 3
+layout_mode = 0
+offset_left = 28.0
+offset_top = 29.0
+offset_right = 77.0
+offset_bottom = 80.0
+theme_type_variation = &"IconButton"
+icon = ExtResource("6_8t5ts")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Bricks" type="ReferenceRect" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 130.0
+offset_right = 1195.0
+offset_bottom = 401.0
+border_color = Color(1, 1, 1, 1)
+editor_only = false
+
+[node name="CursorRect" type="ReferenceRect" parent="Bricks"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+border_color = Color(1, 1, 1, 1)
+editor_only = false
+
+[node name="EditPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 459.0
+offset_right = 82.0
+offset_bottom = 459.0
+
+[node name="ColorRect" type="ColorRect" parent="EditPanel"]
+layout_mode = 0
+offset_right = 1120.0
+offset_bottom = 220.0
+color = Color(0.407843, 0.407843, 0.407843, 0.368627)
+
+[node name="AreaWidth" type="Control" parent="EditPanel"]
+anchors_preset = 0
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 523.0
+offset_bottom = 62.0
+
+[node name="Label" type="Label" parent="EditPanel/AreaWidth"]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 28.0
+text = "Area Width"
+
+[node name="HSlider" type="HSlider" parent="EditPanel/AreaWidth"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 7.0
+offset_right = 412.0
+offset_bottom = 23.0
+
+[node name="Value" type="Label" parent="EditPanel/AreaWidth"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 2.0
+offset_right = 479.0
+offset_bottom = 30.0
+text = "1280"
+horizontal_alignment = 2
+
+[node name="AreaHeight" type="Control" parent="EditPanel"]
+anchors_preset = 0
+offset_left = 604.0
+offset_top = 30.0
+offset_right = 1094.0
+offset_bottom = 62.0
+
+[node name="Label" type="Label" parent="EditPanel/AreaHeight"]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 28.0
+text = "Area Height"
+
+[node name="HSlider" type="HSlider" parent="EditPanel/AreaHeight"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 7.0
+offset_right = 412.0
+offset_bottom = 23.0
+
+[node name="Value" type="Label" parent="EditPanel/AreaHeight"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 2.0
+offset_right = 479.0
+offset_bottom = 30.0
+text = "1280"
+horizontal_alignment = 2
+
+[connection signal="button_down" from="Pause/PauseMenu/Restart" to="." method="_on_paddle_miss"]
+[connection signal="button_up" from="Pause/PauseMenu/Restart" to="." method="restart"]
+[connection signal="button_down" from="Pause/PauseMenu/Back" to="." method="_back_to_menu"]

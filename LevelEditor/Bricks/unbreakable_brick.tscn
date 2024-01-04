@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc1i0kk47c88"]
+
+[sub_resource type="Gradient" id="Gradient_x40i6"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_drj2l"]
+gradient = SubResource("Gradient_x40i6")
+width = 1
+
+[node name="UnbreakableBrick" type="TextureRect" groups=["brick", "unbreakable"]]
+show_behind_parent = true
+offset_right = 1.0
+offset_bottom = 1.0
+mouse_default_cursor_shape = 2
+texture = SubResource("GradientTexture1D_drj2l")
+stretch_mode = 1

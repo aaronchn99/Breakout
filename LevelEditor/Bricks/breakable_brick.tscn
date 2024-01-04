@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://wrldbfix3cgq"]
+
+[ext_resource type="Script" path="res://LevelEditor/Bricks/break_brick.gd" id="1_8x2ak"]
+
+[sub_resource type="Gradient" id="Gradient_1u13y"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pvb2b"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_1u13y")
+width = 1
+
+[node name="BreakableBrick" type="TextureRect" groups=["breakable", "brick"]]
+show_behind_parent = true
+offset_right = 129.0
+offset_bottom = 34.0
+mouse_default_cursor_shape = 2
+texture = SubResource("GradientTexture1D_pvb2b")
+stretch_mode = 1
+script = ExtResource("1_8x2ak")
