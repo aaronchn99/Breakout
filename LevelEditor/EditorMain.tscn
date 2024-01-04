@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck8vvaytuswma"]
+[gd_scene load_steps=6 format=3 uid="uid://ck8vvaytuswma"]
 
 [ext_resource type="Theme" uid="uid://cproiw2hcmy8o" path="res://Theme/Main.tres" id="1_til1f"]
 [ext_resource type="Script" path="res://LevelEditor/EditorMain.gd" id="2_b0jtg"]
 [ext_resource type="PackedScene" uid="uid://dfhxag8lv502" path="res://Assets/wall.tscn" id="2_r3yxh"]
-[ext_resource type="PackedScene" uid="uid://cd6e7xq0mf16u" path="res://Assets/Ball.tscn" id="3_u5dmo"]
 [ext_resource type="Texture2D" uid="uid://bydrjlbr0d2pm" path="res://LevelEditor/floppy-disk-solid.svg" id="6_0a3xi"]
 [ext_resource type="Texture2D" uid="uid://bqsccya0v6e27" path="res://Assets/pause-solid.svg" id="6_8t5ts"]
 
@@ -27,10 +26,6 @@ scale = Vector2(20, 672)
 position = Vector2(640, 19)
 rotation = 1.5708
 scale = Vector2(20, 1260)
-
-[node name="Ball" parent="." instance=ExtResource("3_u5dmo")]
-position = Vector2(643, 485)
-script = null
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 1
@@ -147,18 +142,38 @@ offset_bottom = 40.0
 border_color = Color(1, 1, 1, 1)
 editor_only = false
 
+[node name="NoLevels" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 72.0
+offset_top = 118.0
+offset_right = 1206.0
+offset_bottom = 417.0
+
+[node name="Label" type="Label" parent="NoLevels"]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 70.0
+offset_right = 691.0
+offset_bottom = 125.0
+theme_type_variation = &"HeaderLarge"
+text = "No Levels"
+
+[node name="Label2" type="Label" parent="NoLevels"]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 145.0
+offset_right = 801.0
+offset_bottom = 200.0
+theme_type_variation = &"HeaderMedium"
+text = "Add a new level to get started"
+
 [node name="EditPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 82.0
 offset_top = 459.0
-offset_right = 82.0
-offset_bottom = 459.0
-
-[node name="ColorRect" type="ColorRect" parent="EditPanel"]
-layout_mode = 0
-offset_right = 1120.0
-offset_bottom = 220.0
-color = Color(0.407843, 0.407843, 0.407843, 0.368627)
+offset_right = 1202.0
+offset_bottom = 679.0
 
 [node name="BrickType" type="Control" parent="EditPanel"]
 anchors_preset = 0
@@ -181,6 +196,7 @@ offset_left = 79.0
 offset_top = 3.0
 offset_right = 168.0
 offset_bottom = 46.0
+mouse_default_cursor_shape = 2
 item_count = 3
 selected = 0
 popup/item_0/text = "None"
@@ -208,13 +224,14 @@ layout_mode = 0
 offset_left = 87.0
 offset_right = 152.0
 offset_bottom = 31.0
+mouse_default_cursor_shape = 2
 color = Color(1, 0, 0, 1)
 
 [node name="Level" type="Control" parent="EditPanel"]
 anchors_preset = 0
 offset_left = 40.0
 offset_top = 108.0
-offset_right = 314.0
+offset_right = 407.0
 offset_bottom = 157.0
 
 [node name="Label" type="Label" parent="EditPanel/Level"]
@@ -231,7 +248,24 @@ offset_left = 85.0
 offset_top = 3.0
 offset_right = 266.0
 offset_bottom = 46.0
+mouse_default_cursor_shape = 2
 selected = 0
+
+[node name="Add" type="Button" parent="EditPanel/Level"]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 4.0
+offset_right = 318.0
+offset_bottom = 47.0
+text = " + "
+
+[node name="Delete" type="Button" parent="EditPanel/Level"]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 4.0
+offset_right = 362.0
+offset_bottom = 47.0
+text = " - "
 
 [node name="Row" type="Control" parent="EditPanel"]
 anchors_preset = 0
@@ -371,8 +405,24 @@ offset_left = 998.0
 offset_top = 161.0
 offset_right = 1094.0
 offset_bottom = 204.0
+mouse_default_cursor_shape = 2
 text = "Save"
 icon = ExtResource("6_0a3xi")
+
+[node name="Saving" type="Panel" parent="EditPanel"]
+visible = false
+layout_mode = 0
+offset_right = 1120.0
+offset_bottom = 220.0
+
+[node name="Label" type="Label" parent="EditPanel/Saving"]
+layout_mode = 0
+offset_left = 534.0
+offset_top = 58.0
+offset_right = 628.0
+offset_bottom = 100.0
+theme_type_variation = &"HeaderMedium"
+text = "Saving"
 
 [connection signal="button_down" from="Pause/PauseMenu/Restart" to="." method="_on_paddle_miss"]
 [connection signal="button_up" from="Pause/PauseMenu/Restart" to="." method="restart"]
@@ -380,6 +430,8 @@ icon = ExtResource("6_0a3xi")
 [connection signal="item_selected" from="EditPanel/BrickType/OptionButton" to="." method="on_change_brick_type"]
 [connection signal="color_changed" from="EditPanel/Color/ColorPickerButton" to="." method="on_color_change"]
 [connection signal="item_selected" from="EditPanel/Level/OptionButton" to="." method="on_level_change"]
+[connection signal="pressed" from="EditPanel/Level/Add" to="." method="add_level"]
+[connection signal="pressed" from="EditPanel/Level/Delete" to="." method="remove_current_level"]
 [connection signal="value_changed" from="EditPanel/Row/SpinBox" to="." method="on_row_change"]
 [connection signal="value_changed" from="EditPanel/Column/SpinBox" to="." method="on_col_change"]
 [connection signal="value_changed" from="EditPanel/Gap/SpinBox" to="." method="on_gap_change"]

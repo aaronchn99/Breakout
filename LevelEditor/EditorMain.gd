@@ -63,11 +63,7 @@ func create_brick(prefab : Resource, c : int, r : int, color = null):
 
 func generate_map(brick_map):
 	# Clean out bricks and reset cursor
-	for b in get_tree().get_nodes_in_group('brick'):
-		$Bricks.remove_child(b)
-		b.queue_free()
-	$Bricks/CursorRect.visible = false
-	selected_brick = null
+	cleanout_bricks()
 	
 	gap = brick_map.gap
 	rows = brick_map.rows
@@ -98,6 +94,14 @@ func generate_map(brick_map):
 			if brick_data.color != null:
 				color = Color(brick_data.color)
 			create_brick(brick_p, b[0]+i, b[1], color)
+
+func cleanout_bricks():
+	# Clean out bricks and reset cursor
+	for b in get_tree().get_nodes_in_group('brick'):
+		$Bricks.remove_child(b)
+		b.queue_free()
+	$Bricks/CursorRect.visible = false
+	selected_brick = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -159,6 +163,31 @@ func on_gap_change(val):
 	generate_map(level_list[selected_level])
 	level_list[selected_level].dirty = true
 
+func add_level():
+	$NoLevels.visible = false
+	level_list.append({
+		'rows': 8,
+		'columns': 8,
+		'gap': 10,
+		'bricks': []
+	});
+	$EditPanel/Level/OptionButton.add_item(str(len(level_list)))
+	$EditPanel/Level/OptionButton.select(len(level_list)-1)
+	on_level_change(len(level_list)-1)
+
+func remove_current_level():
+	if len(level_list) == 0: return
+	brick_array = []
+	$EditPanel/Level/OptionButton.remove_item(len(level_list)-1)
+	level_list.remove_at(selected_level)
+	selected_level = max(selected_level - 1, 0)
+	if len(level_list) == 0:
+		$NoLevels.visible = true
+		cleanout_bricks()
+		return
+	$EditPanel/Level/OptionButton.select(selected_level)
+	on_level_change(selected_level)
+
 # Stores currently displayed bricks to level_list. Called on level change and save
 func store_level():
 	if not 'dirty' in level_list[selected_level]: return
@@ -174,8 +203,9 @@ func store_level():
 			bricks.append(brick)
 	level_list[selected_level].bricks = bricks
 
-# 
+# Save levels to file
 func save():
+	$EditPanel/Saving.visible = true
 	store_level()
 	var is_identical = func(b1, b2):
 		return b1.color == b2.color and b1.breakable == b2.breakable
@@ -206,3 +236,5 @@ func save():
 	var json = JSON.stringify(level_list, '\t')
 	f.store_string(json)
 	f.close()
+	await get_tree().create_timer(0.5).timeout
+	$EditPanel/Saving.visible = false
