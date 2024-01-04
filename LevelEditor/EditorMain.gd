@@ -16,6 +16,7 @@ var selected_level:		# Alias for level dropdown selected option
 var brick_array : Array
 var selected_brick:
 	set(brick):
+		if not brick == null:
 		$Bricks/CursorRect.position = brick.position - Vector2.ONE
 		$Bricks/CursorRect.size = brick.size + 3*Vector2.ONE
 		$Bricks/CursorRect.visible = true
@@ -65,11 +66,12 @@ func create_brick(prefab : Resource, c : int, r : int, color = null):
 	return brick
 
 func generate_map(brick_map):
-	# Clean out bricks
+	# Clean out bricks and reset cursor
 	for b in get_tree().get_nodes_in_group('brick'):
 		$Bricks.remove_child(b)
 		b.queue_free()
 	$Bricks/CursorRect.visible = false
+	selected_brick = null
 	
 	gap = brick_map.gap
 	rows = brick_map.rows
