@@ -206,7 +206,7 @@ func save():
 			new_bricks.append(leading)
 		level_list[i].bricks = new_bricks
 	# Save to json file
-	var f = FileAccess.open(LEVEL_FILE+'tmp', FileAccess.WRITE)
+	var f = FileAccess.open(LEVEL_FILE, FileAccess.WRITE)
 	var json = JSON.stringify(level_list, '\t')
 	f.store_string(json)
 	f.close()
