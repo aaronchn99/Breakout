@@ -17,7 +17,10 @@ var selected_brick:
 		
 		var coords = brick.get_meta('Coordinates')
 		var i = $EditPanel/BrickType/OptionButton.selected
-		brick = create_brick(brick_types[i], coords.x, coords.y)
+		var color = null
+		if $EditPanel/Color.visible:
+			color = $EditPanel/Color/ColorPickerButton.color
+		brick = create_brick(brick_types[i], coords.x, coords.y, color)
 		selected_brick = brick
 
 var gap : float
@@ -31,11 +34,12 @@ var brick_h : float
 #	c		int 		column (or x coordinate)
 #	r		int			row (or y coordinate)
 #	Returns instantiated brick Node
-func create_brick(prefab : Resource, c : int, r : int):
+func create_brick(prefab : Resource, c : int, r : int, color = null):
 	var brick = prefab.instantiate()
 	$Bricks.add_child(brick)
 	brick.set_size(Vector2(brick_w, brick_h))
 	brick.position = Vector2(c*(brick_w+gap),r*(brick_h+gap))
+	if color != null: brick.set_color(color)
 	brick.set_meta('Coordinates', Vector2i(c, r))
 	if brick_array[r][c]:
 		brick_array[r][c].queue_free()
@@ -73,9 +77,10 @@ func generate_map(brick_map):
 		if 'breakable' in brick_data and not brick_data.breakable:
 			brick_p = unbreak_brick
 		for i in range(repeat):
-			var brick = create_brick(brick_p, b[0]+i, b[1])
+			var color = null
 			if 'color' in brick_data:
-				brick.set_color(Color(brick_map.colors[brick_data.color]))
+				color = Color(brick_map.colors[brick_data.color])
+			create_brick(brick_p, b[0]+i, b[1], color)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -87,6 +92,8 @@ func _ready():
 	level_list = json.data
 	f.close()
 	generate_map(level_list[0])
+	
+	on_change_brick_type($EditPanel/BrickType/OptionButton.selected)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -101,4 +108,10 @@ func on_brick_gui_event(event : InputEvent, brick):
 
 # When BrickType option changed
 func on_change_brick_type(type):
-	selected_brick = selected_brick
+	$EditPanel/Color.visible = type == 1
+	if selected_brick:
+		selected_brick = selected_brick
+
+func on_color_change(color : Color):
+	if selected_brick:
+		selected_brick = selected_brick

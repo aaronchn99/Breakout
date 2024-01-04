@@ -189,6 +189,25 @@ popup/item_1/id = 1
 popup/item_2/text = "Unbreakable"
 popup/item_2/id = 2
 
+[node name="Color" type="Control" parent="EditPanel"]
+anchors_preset = 0
+offset_left = 367.0
+offset_top = 26.0
+offset_right = 525.0
+offset_bottom = 59.0
+
+[node name="Label" type="Label" parent="EditPanel/Color"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 28.0
+text = "Colour"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="EditPanel/Color"]
+layout_mode = 0
+offset_left = 87.0
+offset_right = 152.0
+offset_bottom = 31.0
+
 [node name="AreaWidth" type="Control" parent="EditPanel"]
 anchors_preset = 0
 offset_left = 33.0
@@ -251,3 +270,4 @@ horizontal_alignment = 2
 [connection signal="button_up" from="Pause/PauseMenu/Restart" to="." method="restart"]
 [connection signal="button_down" from="Pause/PauseMenu/Back" to="." method="_back_to_menu"]
 [connection signal="item_selected" from="EditPanel/BrickType/OptionButton" to="." method="on_change_brick_type"]
+[connection signal="color_changed" from="EditPanel/Color/ColorPickerButton" to="." method="on_color_change"]
