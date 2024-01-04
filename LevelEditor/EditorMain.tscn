@@ -236,7 +236,7 @@ selected = 0
 anchors_preset = 0
 offset_left = 623.0
 offset_top = 21.0
-offset_right = 897.0
+offset_right = 795.0
 offset_bottom = 70.0
 
 [node name="Label" type="Label" parent="EditPanel/Row"]
@@ -252,6 +252,30 @@ layout_mode = 0
 offset_left = 85.0
 offset_top = 3.0
 offset_right = 168.063
+offset_bottom = 46.0
+alignment = 2
+update_on_text_changed = true
+
+[node name="Column" type="Control" parent="EditPanel"]
+anchors_preset = 0
+offset_left = 855.0
+offset_top = 23.0
+offset_right = 1026.0
+offset_bottom = 72.0
+
+[node name="Label" type="Label" parent="EditPanel/Column"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = 62.0
+offset_bottom = 35.0
+text = "Columns"
+
+[node name="SpinBox" type="SpinBox" parent="EditPanel/Column"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 3.0
+offset_right = 203.063
 offset_bottom = 46.0
 alignment = 2
 update_on_text_changed = true
@@ -321,3 +345,4 @@ horizontal_alignment = 2
 [connection signal="color_changed" from="EditPanel/Color/ColorPickerButton" to="." method="on_color_change"]
 [connection signal="item_selected" from="EditPanel/Level/OptionButton" to="." method="on_level_change"]
 [connection signal="value_changed" from="EditPanel/Row/SpinBox" to="." method="on_row_change"]
+[connection signal="value_changed" from="EditPanel/Column/SpinBox" to="." method="on_col_change"]

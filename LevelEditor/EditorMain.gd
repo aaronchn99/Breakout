@@ -34,7 +34,11 @@ var rows : int:
 		level_list[selected_level].rows = val
 		$EditPanel/Row/SpinBox.set_value_no_signal(val)
 		rows = val
-var columns : int
+var columns : int:
+	set(val):
+		level_list[selected_level].columns = val
+		$EditPanel/Column/SpinBox.set_value_no_signal(val)
+		columns = val
 var brick_w : float
 var brick_h : float
 
@@ -134,4 +138,8 @@ func on_level_change(level):
 
 func on_row_change(val):
 	rows = val
+	generate_map(level_list[selected_level])
+
+func on_col_change(val):
+	columns = val
 	generate_map(level_list[selected_level])
