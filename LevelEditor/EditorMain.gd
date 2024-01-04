@@ -8,25 +8,21 @@ var unbreak_brick = preload("res://LevelEditor/Bricks/unbreakable_brick.tscn")
 var brick_types = [empty_brick, break_brick, unbreak_brick]
 
 var level_list
-var selected_level:		# Alias for level dropdown selected option
-	set(level):
-		$EditPanel/Level/OptionButton.selected = level
-	get:
-		return $EditPanel/Level/OptionButton.selected
+var selected_level : int
 var brick_array : Array
 var selected_brick:
 	set(brick):
 		if not brick == null:
-		$Bricks/CursorRect.position = brick.position - Vector2.ONE
-		$Bricks/CursorRect.size = brick.size + 3*Vector2.ONE
-		$Bricks/CursorRect.visible = true
-		
-		var coords = brick.get_meta('Coordinates')
-		var i = $EditPanel/BrickType/OptionButton.selected
-		var color = null
-		if $EditPanel/Color.visible:
-			color = $EditPanel/Color/ColorPickerButton.color
-		brick = create_brick(brick_types[i], coords.x, coords.y, color)
+			$Bricks/CursorRect.position = brick.position - Vector2.ONE
+			$Bricks/CursorRect.size = brick.size + 3*Vector2.ONE
+			$Bricks/CursorRect.visible = true
+			
+			var coords = brick.get_meta('Coordinates')
+			var i = $EditPanel/BrickType/OptionButton.selected
+			var color = null
+			if $EditPanel/Color.visible:
+				color = $EditPanel/Color/ColorPickerButton.color
+			brick = create_brick(brick_types[i], coords.x, coords.y, color)
 		selected_brick = brick
 
 var gap : float:
@@ -115,7 +111,7 @@ func _ready():
 	for i in range(len(level_list)):
 		$EditPanel/Level/OptionButton.add_item(str(i+1))
 	
-	on_level_change(selected_level)
+	on_level_change($EditPanel/Level/OptionButton.selected)
 	on_change_brick_type($EditPanel/BrickType/OptionButton.selected)
 
 
@@ -140,6 +136,9 @@ func on_color_change(color : Color):
 		selected_brick = selected_brick
 
 func on_level_change(level):
+	if len(brick_array):
+		store_level()
+	selected_level = level
 	generate_map(level_list[level])
 
 func on_row_change(val):
@@ -153,3 +152,26 @@ func on_col_change(val):
 func on_gap_change(val):
 	gap = val
 	generate_map(level_list[selected_level])
+
+# Stores currently displayed bricks to level_list. Called on level change and save
+func store_level():
+	var colors = {}
+	var bricks = []
+	for i in range(len(brick_array)):
+		for j in range(len(brick_array[i])):
+			if brick_array[i][j].is_in_group('empty'): continue
+			var brick = {'pos': [j, i]}
+			if brick_array[i][j].is_in_group('unbreakable'):
+				brick.breakable = false
+			else:
+				var color_code = brick_array[i][j].color.to_html()
+				brick.color = color_code
+				colors[color_code] = '#' + color_code
+			bricks.append(brick)
+	level_list[selected_level].colors = colors
+	level_list[selected_level].bricks = bricks
+
+
+# func save():
+# 	for i in range(len(level_list)):
+		
