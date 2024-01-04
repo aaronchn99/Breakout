@@ -90,13 +90,13 @@ func generate_map(brick_map):
 		var b = brick_data.pos
 		var brick_p = break_brick
 		if b[1] >= rows: continue
-		if 'breakable' in brick_data and not brick_data.breakable:
+		if not brick_data.breakable:
 			brick_p = unbreak_brick
 		for i in range(repeat):
-			var color = null
 			if b[0]+i >= columns: continue
-			if 'color' in brick_data and brick_data.color != null:
-				color = Color(brick_map.colors[brick_data.color])
+			var color = null
+			if brick_data.color != null:
+				color = Color(brick_data.color)
 			create_brick(brick_p, b[0]+i, b[1], color)
 
 # Called when the node enters the scene tree for the first time.
@@ -162,7 +162,6 @@ func on_gap_change(val):
 # Stores currently displayed bricks to level_list. Called on level change and save
 func store_level():
 	if not 'dirty' in level_list[selected_level]: return
-	var colors = {}
 	var bricks = []
 	for i in range(len(brick_array)):
 		for j in range(len(brick_array[i])):
@@ -171,11 +170,8 @@ func store_level():
 			brick.breakable = brick_array[i][j].is_in_group('breakable')
 			brick.color = null
 			if brick.breakable:
-				var color_code = brick_array[i][j].color.to_html()
-				brick.color = color_code
-				colors[color_code] = '#' + color_code
+				brick.color = '#' + brick_array[i][j].color.to_html()
 			bricks.append(brick)
-	level_list[selected_level].colors = colors
 	level_list[selected_level].bricks = bricks
 
 # 

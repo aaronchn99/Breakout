@@ -3,63 +3,48 @@
         "rows": 9,
         "columns": 10,
         "gap": 15,
-        "colors": {
-            "r": "#f00",
-            "g": "#0f0",
-            "b": "#00f"
-        },
         "bricks": [
-            { "pos": [0,0], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,1], "color": "g", "breakable": true, "repeat": 10},
-            { "pos": [0,2], "color": "b", "breakable": true, "repeat": 10},
+            { "pos": [0,0], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,1], "color": "#0f0", "breakable": true, "repeat": 10},
+            { "pos": [0,2], "color": "#00f", "breakable": true, "repeat": 10},
             { "pos": [0,3], "color": null, "breakable": false, "repeat": 9},
-            { "pos": [0,4], "color": "g", "breakable": true, "repeat": 10},
-            { "pos": [0,5], "color": "b", "breakable": true, "repeat": 10},
-            { "pos": [0,6], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,7], "color": "g", "breakable": true, "repeat": 10},
-            { "pos": [0,8], "color": "b", "breakable": true, "repeat": 10}
+            { "pos": [0,4], "color": "#0f0", "breakable": true, "repeat": 10},
+            { "pos": [0,5], "color": "#00f", "breakable": true, "repeat": 10},
+            { "pos": [0,6], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,7], "color": "#0f0", "breakable": true, "repeat": 10},
+            { "pos": [0,8], "color": "#00f", "breakable": true, "repeat": 10}
         ]
     },
     {
         "rows": 9,
         "columns": 10,
         "gap": 15,
-        "colors": {
-            "r": "#f00",
-            "g": "#0f0",
-            "b": "#00f"
-        },
         "bricks": [
-            { "pos": [0,0], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,1], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,2], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,3], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,4], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,5], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,6], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,7], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,8], "color": "r", "breakable": true, "repeat": 10}
+            { "pos": [0,0], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,1], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,2], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,3], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,4], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,5], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,6], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,7], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,8], "color": "#f00", "breakable": true, "repeat": 10}
         ]
     },
     {
         "rows": 9,
         "columns": 10,
         "gap": 15,
-        "colors": {
-            "r": "#f00",
-            "g": "#0f0",
-            "b": "#00f"
-        },
         "bricks": [
-            { "pos": [0,0], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,1], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,2], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,3], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,4], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,5], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,6], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,7], "color": "r", "breakable": true, "repeat": 10},
-            { "pos": [0,8], "color": "r", "breakable": true, "repeat": 10}
+            { "pos": [0,0], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,1], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,2], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,3], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,4], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,5], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,6], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,7], "color": "#f00", "breakable": true, "repeat": 10},
+            { "pos": [0,8], "color": "#f00", "breakable": true, "repeat": 10}
         ]
     }
 ]
