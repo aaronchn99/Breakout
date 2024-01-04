@@ -58,7 +58,7 @@ func restart():
 	generate_map(brick_map)
 	lives = MAX_LIVES
 	score = 0
-	$Ball.reset()
+	$Ball.reset(false)
 	get_tree().paused = false
 
 func _back_to_menu():

@@ -59,7 +59,7 @@ shape = SubResource("RectangleShape2D_ea4wm")
 
 [node name="Ball" parent="." instance=ExtResource("3_ixu7q")]
 position = Vector2(643, 485)
-start_speed = 500
+START_SPEED = 500
 
 [node name="Bricks" type="Control" parent="."]
 layout_mode = 3
