@@ -163,8 +163,8 @@ color = Color(0.407843, 0.407843, 0.407843, 0.368627)
 anchors_preset = 0
 offset_left = 39.0
 offset_top = 19.0
-offset_right = 79.0
-offset_bottom = 59.0
+offset_right = 315.0
+offset_bottom = 72.0
 
 [node name="Label" type="Label" parent="EditPanel/BrickType"]
 layout_mode = 0
@@ -208,6 +208,53 @@ offset_left = 87.0
 offset_right = 152.0
 offset_bottom = 31.0
 color = Color(1, 0, 0, 1)
+
+[node name="Level" type="Control" parent="EditPanel"]
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 108.0
+offset_right = 314.0
+offset_bottom = 157.0
+
+[node name="Label" type="Label" parent="EditPanel/Level"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = 62.0
+offset_bottom = 35.0
+text = "Level"
+
+[node name="OptionButton" type="OptionButton" parent="EditPanel/Level"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 3.0
+offset_right = 266.0
+offset_bottom = 46.0
+selected = 0
+
+[node name="Row" type="Control" parent="EditPanel"]
+anchors_preset = 0
+offset_left = 623.0
+offset_top = 21.0
+offset_right = 897.0
+offset_bottom = 70.0
+
+[node name="Label" type="Label" parent="EditPanel/Row"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = 62.0
+offset_bottom = 35.0
+text = "Rows"
+
+[node name="SpinBox" type="SpinBox" parent="EditPanel/Row"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 3.0
+offset_right = 168.063
+offset_bottom = 46.0
+alignment = 2
+update_on_text_changed = true
 
 [node name="AreaWidth" type="Control" parent="EditPanel"]
 anchors_preset = 0
@@ -272,3 +319,5 @@ horizontal_alignment = 2
 [connection signal="button_down" from="Pause/PauseMenu/Back" to="." method="_back_to_menu"]
 [connection signal="item_selected" from="EditPanel/BrickType/OptionButton" to="." method="on_change_brick_type"]
 [connection signal="color_changed" from="EditPanel/Color/ColorPickerButton" to="." method="on_color_change"]
+[connection signal="item_selected" from="EditPanel/Level/OptionButton" to="." method="on_level_change"]
+[connection signal="value_changed" from="EditPanel/Row/SpinBox" to="." method="on_row_change"]

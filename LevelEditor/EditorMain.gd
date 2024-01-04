@@ -8,6 +8,11 @@ var unbreak_brick = preload("res://LevelEditor/Bricks/unbreakable_brick.tscn")
 var brick_types = [empty_brick, break_brick, unbreak_brick]
 
 var level_list
+var selected_level:		# Alias for level dropdown selected option
+	set(level):
+		$EditPanel/Level/OptionButton.selected = level
+	get:
+		return $EditPanel/Level/OptionButton.selected
 var brick_array : Array
 var selected_brick:
 	set(brick):
@@ -24,7 +29,11 @@ var selected_brick:
 		selected_brick = brick
 
 var gap : float
-var rows : int
+var rows : int:
+	set(val):
+		level_list[selected_level].rows = val
+		$EditPanel/Row/SpinBox.set_value_no_signal(val)
+		rows = val
 var columns : int
 var brick_w : float
 var brick_h : float
@@ -74,10 +83,12 @@ func generate_map(brick_map):
 		var repeat = 1 if not 'repeat' in brick_data else brick_data.repeat
 		var b = brick_data.pos
 		var brick_p = break_brick
+		if b[1] >= rows: continue
 		if 'breakable' in brick_data and not brick_data.breakable:
 			brick_p = unbreak_brick
 		for i in range(repeat):
 			var color = null
+			if b[0]+i >= columns: continue
 			if 'color' in brick_data:
 				color = Color(brick_map.colors[brick_data.color])
 			create_brick(brick_p, b[0]+i, b[1], color)
@@ -91,8 +102,10 @@ func _ready():
 	assert(typeof(json.data) == TYPE_ARRAY, 'Parse data expected Array ('+str(TYPE_ARRAY)+') got '+str(typeof(json.data)))
 	level_list = json.data
 	f.close()
-	generate_map(level_list[0])
+	for i in range(len(level_list)):
+		$EditPanel/Level/OptionButton.add_item(str(i+1))
 	
+	on_level_change(selected_level)
 	on_change_brick_type($EditPanel/BrickType/OptionButton.selected)
 
 
@@ -115,3 +128,10 @@ func on_change_brick_type(type):
 func on_color_change(color : Color):
 	if selected_brick:
 		selected_brick = selected_brick
+
+func on_level_change(level):
+	generate_map(level_list[level])
+
+func on_row_change(val):
+	rows = val
+	generate_map(level_list[selected_level])
