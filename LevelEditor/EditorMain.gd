@@ -5,6 +5,7 @@ extends Control
 var empty_brick = preload("res://LevelEditor/Bricks/empty_brick.tscn")
 var break_brick = preload("res://LevelEditor/Bricks/breakable_brick.tscn")
 var unbreak_brick = preload("res://LevelEditor/Bricks/unbreakable_brick.tscn")
+var brick_types = [empty_brick, break_brick, unbreak_brick]
 
 var level_list
 var brick_array : Array
@@ -13,6 +14,11 @@ var selected_brick:
 		$Bricks/CursorRect.position = brick.position - Vector2.ONE
 		$Bricks/CursorRect.size = brick.size + 3*Vector2.ONE
 		$Bricks/CursorRect.visible = true
+		
+		var coords = brick.get_meta('Coordinates')
+		var i = $EditPanel/BrickType/OptionButton.selected
+		brick = create_brick(brick_types[i], coords.x, coords.y)
+		selected_brick = brick
 
 var gap : float
 var rows : int
@@ -92,3 +98,7 @@ func on_brick_gui_event(event : InputEvent, brick):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			selected_brick = brick
+
+# When BrickType option changed
+func on_change_brick_type(type):
+	selected_brick = selected_brick

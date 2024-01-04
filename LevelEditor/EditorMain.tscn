@@ -159,12 +159,42 @@ offset_right = 1120.0
 offset_bottom = 220.0
 color = Color(0.407843, 0.407843, 0.407843, 0.368627)
 
+[node name="BrickType" type="Control" parent="EditPanel"]
+anchors_preset = 0
+offset_left = 39.0
+offset_top = 19.0
+offset_right = 79.0
+offset_bottom = 59.0
+
+[node name="Label" type="Label" parent="EditPanel/BrickType"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = 62.0
+offset_bottom = 35.0
+text = "Type"
+
+[node name="OptionButton" type="OptionButton" parent="EditPanel/BrickType"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 3.0
+offset_right = 168.0
+offset_bottom = 46.0
+item_count = 3
+selected = 0
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Breakable"
+popup/item_1/id = 1
+popup/item_2/text = "Unbreakable"
+popup/item_2/id = 2
+
 [node name="AreaWidth" type="Control" parent="EditPanel"]
 anchors_preset = 0
 offset_left = 33.0
-offset_top = 30.0
+offset_top = 175.0
 offset_right = 523.0
-offset_bottom = 62.0
+offset_bottom = 207.0
 
 [node name="Label" type="Label" parent="EditPanel/AreaWidth"]
 layout_mode = 0
@@ -191,9 +221,9 @@ horizontal_alignment = 2
 [node name="AreaHeight" type="Control" parent="EditPanel"]
 anchors_preset = 0
 offset_left = 604.0
-offset_top = 30.0
+offset_top = 175.0
 offset_right = 1094.0
-offset_bottom = 62.0
+offset_bottom = 207.0
 
 [node name="Label" type="Label" parent="EditPanel/AreaHeight"]
 layout_mode = 0
@@ -220,3 +250,4 @@ horizontal_alignment = 2
 [connection signal="button_down" from="Pause/PauseMenu/Restart" to="." method="_on_paddle_miss"]
 [connection signal="button_up" from="Pause/PauseMenu/Restart" to="." method="restart"]
 [connection signal="button_down" from="Pause/PauseMenu/Back" to="." method="_back_to_menu"]
+[connection signal="item_selected" from="EditPanel/BrickType/OptionButton" to="." method="on_change_brick_type"]
