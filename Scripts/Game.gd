@@ -23,11 +23,11 @@ func generate_map(brick_map):
 		for i in range(repeat):
 			var brick = brick_p.instantiate()
 			$Bricks.add_child(brick)
-			if 'color' in brick_data:
-				brick.set_color(Color(brick_map.colors[brick_data.color]))
+			if brick_data.color != null:
+				brick.set_color(Color(brick_data.color))
 			brick.set_size(w, h)
 			brick.position = Vector2((b[0]+i)*(w+gap)+w/2,b[1]*(h+gap)+h/2)
-			if 'breakable' in brick_data: brick.breakable = brick_data.breakable
+			brick.breakable = brick_data.breakable
 
 func _ready():
 	restart()
