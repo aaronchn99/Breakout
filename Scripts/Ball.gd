@@ -2,6 +2,8 @@ extends RigidBody2D
 
 @export var START_SPEED = 700
 @export var SPEED_UP = 5
+## In Radians
+@export var MIN_ANGLE = -PI/8
 var current_speed: float
 var original_pos : Vector2
 var velocity : Vector2
@@ -22,8 +24,13 @@ func _physics_process(delta):
 		var Collider = collide_info.get_collider()
 		if Collider.get_collision_layer() == 1:	# Paddles
 			var speed = velocity.length()
-			var direction = (position - Collider.position).normalized()
-			velocity = speed * direction
+			var angle = Collider.position.angle_to_point(position)
+			if angle < 0:
+				angle = max(min(angle, MIN_ANGLE), -PI-MIN_ANGLE)
+				var direction = Vector2.from_angle(angle)
+				velocity = speed * direction
+			else:
+				velocity = velocity.bounce(collide_info.get_normal())
 			collide_sound.set_pitch_scale(2)
 		else:
 			velocity = velocity.bounce(collide_info.get_normal())
